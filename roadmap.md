@@ -1,0 +1,7 @@
+- [x] Preservar a página institucional, a timeline e o snap existentes.
+- [x] Mover os benefícios de Segmentos para chips DOM dentro do painel escuro e remover os chips 3D.
+- [x] Remover o refletor, reduzir o anel e limitar o brilho de chão ao painel.
+- [x] Ajustar apenas o enquadramento em Segmentos e o acabamento dos painéis claros.
+- [x] Conferir os seis segmentos, autoplay e enquadramento em três resoluções desktop.
+- [x] Aplicar a identidade clara Vision mantendo seções, textos, formulário e movimentos do totem.
+- [x] Conferir a paleta, logo e seções em 1440×900 e 1366×768, sem ciano antigo.

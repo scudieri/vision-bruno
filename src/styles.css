@@ -1,0 +1,116 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Sora", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-night-foreground: var(--night-foreground);
+  --color-line-dark: var(--line-dark);
+  --color-surface: var(--surface);
+  --color-cyan: var(--cyan);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-bright: var(--primary-bright);
+  --color-primary-soft: var(--primary-soft);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+:root {
+  --radius: 6px;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.23927 0.05811 256.66);
+  --primary: oklch(0.47228 0.13646 256.56);
+  --primary-deep: oklch(0.38069 0.12824 258.60);
+  --primary-bright: oklch(0.60925 0.18186 257.29);
+  --primary-soft: oklch(0.95232 0.01712 256.28);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95232 0.01712 256.28);
+  --secondary-foreground: oklch(0.23927 0.05811 256.66);
+  --muted: oklch(0.97799 0.00622 255.47);
+  --muted-foreground: oklch(0.52257 0.04189 256.05);
+  --accent: oklch(0.95232 0.01712 256.28);
+  --accent-foreground: oklch(0.23927 0.05811 256.66);
+  --border: oklch(0.93437 0.01432 254.61);
+  --input: oklch(0.93437 0.01432 254.61);
+  --ring: oklch(0.47228 0.13646 256.56);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23927 0.05811 256.66);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23927 0.05811 256.66);
+  --destructive: oklch(0.59 0.22 26);
+  --destructive-foreground: oklch(1 0 0);
+  --night: oklch(0.97799 0.00622 255.47);
+  --night-soft: oklch(1 0 0);
+  --night-foreground: oklch(0.23927 0.05811 256.66);
+  --line-dark: oklch(0.93437 0.01432 254.61);
+  --surface: oklch(0.97799 0.00622 255.47);
+  --cyan: var(--primary-bright);
+  --footer: oklch(0.23927 0.05811 256.66);
+  --footer-foreground: oklch(0.98 0.005 253);
+  --whatsapp: oklch(0.73 0.2 149);
+  --whatsapp-foreground: oklch(0.16 0.038 149);
+}
+
+@layer base {
+  * { box-sizing: border-box; border-color: var(--border); }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+  h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: 0; }
+  button, input, select, textarea { font: inherit; }
+  ::selection { background: var(--primary); color: var(--primary-foreground); }
+}
+
+@utility text-balance { text-wrap: balance; }
+
+.hero-grid { background-image: linear-gradient(color-mix(in oklab, var(--primary) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--primary) 6%, transparent) 1px, transparent 1px); background-size: 76px 76px; mask-image: linear-gradient(to right, transparent, black 40%, black 85%, transparent); }
+.hero-halo { background: radial-gradient(ellipse at center, color-mix(in oklab, var(--primary-bright) 10%, transparent), transparent 65%); }
+.top-glow { background: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 65%); }
+.product-stage { background: radial-gradient(ellipse at center, color-mix(in oklab, var(--primary-bright) 13%, var(--primary-soft)), var(--background) 70%); }
+.brand-marquee { animation: marquee 38s linear infinite; }
+.brand-marquee:hover { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.scroll-track::-webkit-scrollbar { height: 4px; }
+.scroll-track::-webkit-scrollbar-thumb { background: var(--primary); }
+.scroll-track { scrollbar-color: var(--primary) transparent; scrollbar-width: thin; }
+.kiosk-boot { animation: kiosk-boot 1.2s ease-out both; }
+.kiosk-scene { perspective: 900px; }
+.kiosk-float { transform-style: preserve-3d; }
+.kiosk-led { animation: kiosk-led 3.4s ease-in-out infinite; }
+@keyframes kiosk-led { 50% { opacity: .27; } }
+@keyframes kiosk-boot { from { opacity: 0; filter: brightness(0); } 65% { opacity: 1; filter: brightness(1.6); } to { filter: brightness(1); } }
+.scroll-pulse { animation: scroll-pulse 1.8s ease-in-out infinite; }
+@keyframes scroll-pulse { 50% { transform: translateY(6px); opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }.glass-sheen { background: linear-gradient(120deg, color-mix(in oklab, var(--night-foreground) 22%, transparent) 0%, transparent 32%, transparent 70%, color-mix(in oklab, var(--night-foreground) 8%, transparent) 100%); }
+.hotspot::after { content: ""; position: absolute; inset: -6px; border-radius: 9999px; border: 1px solid var(--cyan); animation: hotspot 1.8s cubic-bezier(0.22,1,0.36,1) infinite; }
+@keyframes hotspot { from { transform: scale(.6); opacity: 1; } to { transform: scale(2.2); opacity: 0; } }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.segment-progress { transform-origin: left; animation: segment-progress 5s linear forwards; }
+@keyframes segment-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
