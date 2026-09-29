@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
-import { RoundedBox, useTexture } from "@react-three/drei";
+import { RoundedBox } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import logoWhite from "@/assets/vision/logo-white.png.asset.json";
 import { drawScreen } from "./screen";
 import { totemState } from "./totem-store";
 import { SEGMENT_CONFIG } from "./segment-config";
@@ -95,11 +94,36 @@ function Screen({ w, h, m, vertical, live, flowRef, staticFlow = 0 }: { w: numbe
   </group>;
 }
 
+function useLogoTexture() {
+  return useMemo(() => {
+    if (typeof document === "undefined") return null;
+    const c = document.createElement("canvas");
+    c.width = 512;
+    c.height = 128;
+    const ctx = c.getContext("2d");
+    if (ctx) {
+      ctx.clearRect(0, 0, 512, 128);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 60px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("VISION", 256, 64);
+    }
+    const t = new THREE.CanvasTexture(c);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, []);
+}
+
 function Logo({ y, width }: { y: number; width: number }) {
-  const tex = useTexture(logoWhite.url);
-  const img = tex.image as { width: number; height: number } | undefined;
-  const aspect = img ? img.width / img.height : 4;
-  return <mesh position={[0, y, 0.009]}><planeGeometry args={[width, width / aspect]} /><meshBasicMaterial map={tex} transparent alphaTest={0.25} toneMapped={false} color="#ffffff" /></mesh>;
+  const tex = useLogoTexture();
+  const aspect = 4;
+  return (
+    <mesh position={[0, y, 0.009]}>
+      <planeGeometry args={[width, width / aspect]} />
+      <meshBasicMaterial map={tex} transparent alphaTest={0.05} toneMapped={false} color="#ffffff" />
+    </mesh>
+  );
 }
 
 export function Totem({ variant = "smart", live = false, staticFlow = 0 }: { variant?: Variant; live?: boolean; staticFlow?: number }) {
